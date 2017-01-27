@@ -39,6 +39,7 @@ services:
       - /bin/true
     volumes:
       - "./source/web:/app/web"
+      - "./settings/drupal:/app/web/sites/default"
       - "./source/vendor:/app/vendor"
       - "./source/config:/app/config"
 
@@ -54,10 +55,13 @@ services:
     image: quay.io/wunder/fuzzy-alpine-base
     command:
       - /bin/true
+    volumes_from:
+      - source    
     volumes:
-      - "./assets/public:/app/web/sites/default/files"
+      - "assets_public:/app/web/sites/default/files"
+      - "assets_private:/app/private"
       - "./assets/backup:/app/backup"
-      - "./assets/private:/app/private"
+
 
   ####
   # Servers
@@ -76,6 +80,8 @@ services:
   #
   db:
     image: quay.io/wunder/fuzzy-alpine-mariadb
+    volumes:
+      - "dbdata:/var/lib/mysql"
 
   ####
   # MemCacheD
@@ -126,3 +132,8 @@ services:
       VARNISH_BACKEND_HOST: backend.app
     links:
       - www:backend.app
+
+volumes:
+  assets_public: {}
+  assets_private: {}
+  dbdata: {}

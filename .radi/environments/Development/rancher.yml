@@ -1,0 +1,7 @@
+Master:
+  # You should know the url for a rancher master, if you will use rancher for provisioning.
+  Url: rancher-master.docker:8080
+  User:
+    Name: radi-dev-api
+    Password: "SOMEPASSWORDHERE"
+    Environment: "%PROJECT%"

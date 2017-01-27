@@ -1,0 +1,24 @@
+# Each component enables a builder with it's impementations and settings
+Components: 
+
+  # Example
+  # - Type: my_custom_builder
+  #   Implementations:
+  #      - security
+  #   Settings:
+  #      {some custom settings to pass to the builder}
+
+  # Base implmentation is a local project
+  - Type: local
+    Implementations:
+      - config
+      - setting
+      - project
+      - security
+
+  # Use Rancher for orchestration
+  - Type: rancher
+    Implementations:
+      - monitor
+      - orchestrate
+      - command

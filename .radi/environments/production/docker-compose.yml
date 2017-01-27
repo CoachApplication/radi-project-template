@@ -13,7 +13,7 @@ services:
   source:
     # This should be switched to a production source code image
     # which we should build based on a Dockerfile in the root
-    image: "quay.io/wunder/fuzzy-alpine-base"
+    image: "quay.io/wunder/client-someproject-source"
     command:
       - /bin/true
     volumes:
@@ -28,13 +28,13 @@ services:
   # can better provide backups etc.
   #
   assets:
-    image: quay.io/wunder/wunder-alpine-base
+    image: "quay.io/wunder/fuzzy-alpine-base"
     command:
       - /bin/true
     volumes:
-      - "/app/web/sites/default/files"
-      - "/app/backup"
-      - "/app/private"
+      - "assets/public:/app/web/sites/default/files"
+      - "assets/backup:/app/backup"
+      - "assets/private:/app/private"
 
   ####
   # Servers
@@ -53,6 +53,8 @@ services:
   #
   db:
     image: quay.io/wunder/fuzzy-alpine-mariadb
+    volumes:
+      - "dbdata:/var/lib/mysql"
 
   ####
   # MemCacheD
@@ -93,3 +95,7 @@ services:
       VARNISH_BACKEND_HOST: backend.app
     links:
       - www:backend.app
+
+volumes:
+  assets: {}
+  dbdata: {}

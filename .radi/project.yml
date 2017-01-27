@@ -36,13 +36,3 @@ Components:
     Implementations:
       - orchestrate
       - command
-
-  # Use upcloud (just for testing right now)
-  - Type: upcloud
-    Implementations:
-      - monitor
-      - provision
-      - security
-    Settings:
-      Tag:
-        wundertest
