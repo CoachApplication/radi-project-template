@@ -1,8 +1,5 @@
-# Assetd
-assets/public/*
-assets/private/*
+# Assets
 assets/backup/*
-backup/*
 
 # Source stuff that should come from a build
 source/vendor
@@ -16,9 +13,6 @@ source/web/sites/example.*
 source/web/sites/*/default.*
 source/web/sites/*/services.local.yml
 source/web/sites/*/settings.local.php
-
-# Drupal assets (will likely be mapped anyway)
-source/web/sites/*/files/*
 
 # Stupid OSX garbage
 .DS_Store

@@ -21,13 +21,8 @@ Access:
   # Upcloud password [this should be a tokenized secret value]
   Password: "SOMEPASSWORDHERE"
 
-Rancher:
-  Master:
-    # You should know the url for a rancher master, if you will use rancher for provisioning.
-    Url: 94.237.33.56:8080
-    User:
-      Name: radi-dev-api
-      Password: "SOMEPASSWORDHERE"
+Implementation:
+  Rancher: {}
 
 # SERVERS
 #
