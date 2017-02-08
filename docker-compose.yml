@@ -39,7 +39,7 @@ services:
       - /bin/true
     volumes:
       - "./source/web:/app/web"
-      - "./settings/drupal:/app/web/sites/default"
+      - "./settings/drupal/local:/app/web/sites/default"
       - "./source/vendor:/app/vendor"
       - "./source/config:/app/config"
 
@@ -115,8 +115,8 @@ services:
   www:
     image: quay.io/wunder/fuzzy-alpine-nginx-pagespeed-drupal
     volumes_from:
-      - source
-      - assets
+      - source:ro
+      - assets:ro
     environment:
       DNSDOCK_ALIAS: www.undertest.docker
     links:
